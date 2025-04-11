@@ -4,19 +4,20 @@ const placesClient = new PlacesClient({
   apiKey: process.env.GOOGLE_MAPS_API_KEY,
 });
 
-async function getPlaces(lat, long, radius, maxresults) {
+async function getPlaces(lat, long, radius, maxresults, types) {
   const locationRestriction = {
     circle: {
       center: {
         latitude: lat,
         longitude: long,
       },
-      radius: radius, // TODO add a function to convert from km to meters
+      radius: radius,
     },
   };
   const request = {
     locationRestriction,
     maxResultCount: maxresults,
+    includedTypes: types,
   };
 
   try {
