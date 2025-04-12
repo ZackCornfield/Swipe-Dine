@@ -4,6 +4,7 @@ const express = require("express");
 const cors = require("cors");
 
 const app = express();
+const googleMapsRouter = require("./routes/googleMapsRouter");
 
 const FRONTEND_URL =
   process.env.NODE_ENV === "production"
@@ -35,8 +36,9 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 app.get("/", (req, res) => {
-  res.send("Hello, World!");
+  res.send("Welcome to the Google Maps API server!");
 });
+app.use("/google-maps", googleMapsRouter);
 
 // Start server
 const PORT = process.env.PORT || 3000;
