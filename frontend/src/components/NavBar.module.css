@@ -1,0 +1,15 @@
+.navbar {
+    height: 10vh;
+}
+
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--color-navBackground);
+    align-items: center;
+    padding: 0% 5%;
+    height: 100%;
+    font-size: x-large;
+    font-weight: bold;
+    font-family: var(--font-main);
+}
