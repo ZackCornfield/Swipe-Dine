@@ -1,2 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
 :root {
+    --color-bg: rgb(175, 241, 220);
+    --color-navBackground: rgb(179, 243, 240);
+    --font-main: "Nunito", sans-serif;
+}
+
+* {
+    text-decoration: none;
+    color: inherit;
+}
+
+*:visited {
+    text-decoration: none;
+    color: inherit;
 }
