@@ -3,9 +3,9 @@ const router = express.Router();
 const googleMapsController = require("../controllers/googleMapsController");
 
 // Route to get places based on location and other parameters
-router.get("/places", googleMapsController.getPlaces);
+router.post("/places", googleMapsController.getPlaces);
 
 // Route to get details of a specific place
-router.get("/placeDetails", googleMapsController.getPlaceDetails);
+router.get("/placeDetails/:id", googleMapsController.getPlaceDetails);
 
 module.exports = router;

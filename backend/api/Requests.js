@@ -39,9 +39,9 @@ async function getPlaces(lat, long, radius, maxresults, types, rating) {
   }
 }
 
-async function getPlaceDetails(place) {
+async function getPlaceDetails(id) {
   const request = {
-    name: `places/${place.id}`,
+    name: `places/${id}`,
   };
 
   const response = await placesClient.getPlace(request, {

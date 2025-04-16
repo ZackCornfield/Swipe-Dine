@@ -20,9 +20,9 @@ module.exports = {
     }
   },
   getPlaceDetails: async (req, res) => {
-    const { place } = req.body;
+    const placeId = req.params.id;
     try {
-      const placeDetails = await getPlaceDetails(place);
+      const placeDetails = await getPlaceDetails(placeId);
       res.status(200).json(placeDetails);
     } catch (error) {
       res.status(500).json({ error: "Error fetching place details" });
