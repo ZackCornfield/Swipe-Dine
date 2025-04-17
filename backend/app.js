@@ -9,7 +9,7 @@ const googleMapsRouter = require("./routes/googleMapsRouter");
 const FRONTEND_URL =
   process.env.NODE_ENV === "production"
     ? process.env.FRONT_END_URL
-    : "http://localhost:3000";
+    : "http://localhost:5173";
 
 // Middleware to enable CORS for the frontend URL
 app.use(

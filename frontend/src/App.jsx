@@ -6,7 +6,11 @@ import ResultPage from "./Pages/ResultPage";
 import "./App.css";
 import Layout from "./Pages/Layout";
 
+import useGoogleMaps from "./hooks/useGoogleMaps";
+
 function App() {
+    useGoogleMaps();
+
     return (
         <Router>
             <Routes>
