@@ -6,6 +6,6 @@ const googleMapsController = require("../controllers/googleMapsController");
 router.post("/places", googleMapsController.getPlaces);
 
 // Route to get details of a specific place
-router.get("/placeDetails/:id", googleMapsController.getPlaceDetails);
+router.get("/placeDetails/:id", googleMapsController.getPlaceDetails); 
 
 module.exports = router;

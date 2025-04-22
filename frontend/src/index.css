@@ -1,8 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap");
+
 :root {
-    --color-bg: rgb(175, 241, 220);
-    --color-navBackground: rgb(179, 243, 240);
     --font-main: "Nunito", sans-serif;
+    --primary-color: rgb(152, 218, 214);
+    --secondary-color: #424743;
+    --accent-color: rgb(128, 216, 210);
+    --light-gray: #f5f5f5;
+    --medium-gray: #e0e0e0;
+    --dark-gray: #c4c3c3;
+    --white: #ffffff;
+    --black: #333333;
+    --border-radius: 8px;
+    --box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
 }
 
 * {
@@ -13,4 +23,43 @@
 *:visited {
     text-decoration: none;
     color: inherit;
+}
+
+/* ========== GeoSuggest Overrides ========== */
+
+.geosuggest__input {
+    width: 100%;
+    padding: 0.5rem 0.2rem;
+    border: 1px solid var(--medium-gray);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+}
+
+.geosuggest__input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.2);
+}
+
+.geosuggest__suggests {
+    border: 1px solid var(--medium-gray);
+    border-top: none;
+    border-radius: 0 0 var(--border-radius) var(--border-radius);
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.geosuggest__item {
+    padding: 0.5rem 0.75rem;
+    cursor: pointer;
+}
+
+.geosuggest__item:hover {
+    background-color: var(--light-gray);
+}
+
+.geosuggest__suggests--hidden {
+    max-height: 0;
+    overflow: hidden;
+    border-width: 0;
 }

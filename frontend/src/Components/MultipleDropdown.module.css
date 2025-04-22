@@ -1,0 +1,39 @@
+/* ========== MultiSelectCheckboxes Styles ========== */
+.multiSelectContainer {
+    margin-top: 0.5rem;
+}
+
+.multiSelectLabel {
+    display: inline-block;
+    margin: 0.25rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--light-gray);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: var(--transition);
+    font-size: 0.9rem;
+}
+
+.multiSelectLabel:hover {
+    background-color: var(--medium-gray);
+}
+
+.multiSelectLabel.selected {
+    background-color: var(--primary-color);
+}
+
+.multiSelectLabel input {
+    display: none;
+}
+
+.multiSelectLabel.allOption {
+    margin-bottom: 0.5rem;
+    display: block;
+    width: fit-content;
+    text-decoration: underline;
+}
+
+.multiSelectLabel.allOption.selected {
+    font-weight: bold;
+    background-color: transparent;
+}

@@ -1,0 +1,86 @@
+/* Main container */
+.carouselWrapper {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Slider container */
+.sliderContainer {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Individual slide */
+.slide {
+    outline: none; /* Remove focus outline */
+}
+
+/* Slide images */
+.slideImage {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Arrow buttons */
+.slickPrev,
+.slickNext {
+    width: 40px;
+    height: 40px;
+    z-index: 1;
+}
+
+.slickPrev {
+    left: 20px;
+}
+
+.slickNext {
+    right: 20px;
+}
+
+.slickPrev:before,
+.slickNext:before {
+    font-size: 40px;
+    color: #fff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Dots/pagination */
+.slickDots {
+    bottom: 20px;
+}
+
+.slickDots li button:before {
+    color: #fff;
+    opacity: 0.5;
+    font-size: 10px;
+}
+
+.slickDots li.slick-active button:before {
+    color: #fff;
+    opacity: 1;
+}
+.arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 2;
+    font-size: 2rem;
+    background: rgba(22, 222, 229, 0.5);
+    color: white;
+    padding: 0.5rem;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.next {
+    right: 10px;
+}
+
+.prev {
+    left: 10px;
+}

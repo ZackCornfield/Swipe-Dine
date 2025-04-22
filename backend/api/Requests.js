@@ -6,12 +6,12 @@ const placesClient = new PlacesClient({
     apiKey: process.env.GOOGLE_MAPS_API_KEY,
 });
 
-const getPlaces = async (lat, long, radius, maxresults, types, rating) => {
+const getPlaces = async (lat, lng, radius, maxresults, types, rating) => {
     const locationRestriction = {
         circle: {
             center: {
                 latitude: lat,
-                longitude: long,
+                longitude: lng,
             },
             radius: radius,
         },

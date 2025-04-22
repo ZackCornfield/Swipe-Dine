@@ -1,14 +1,13 @@
 import { useState, useEffect } from "react";
+import styles from "./MultipleDropdown.module.css";
 
 const formatLabel = (str, rejects = []) => {
     let label = str;
-    // Remove unwanted suffixes
     rejects.forEach((rej) => {
         if (label.endsWith(`_${rej}`)) {
             label = label.replace(`_${rej}`, "");
         }
     });
-    // Clean formatting (e.g. snake_case => Title Case)
     return label
         .replace(/_/g, " ")
         .replace(/(^\w|\s\w)/g, (m) => m.toUpperCase());
@@ -36,40 +35,32 @@ const MultiSelectCheckboxes = ({ options = [], onChange, rejects = [] }) => {
     }, [selected, onChange]);
 
     return (
-        <div>
+        <div className={styles.multiSelectContainer}>
             <label
-                style={{
-                    cursor: "pointer",
-                    marginRight: "10px",
-                    color: selected.length === options.length ? "green" : "blue",
-                    textDecoration: "underline",
-                }}
+                className={`${styles.multiSelectLabel} ${styles.allOption} ${
+                    selected.length === options.length ? styles.selected : ""
+                }`}
             >
                 <input
                     type="checkbox"
                     value="all"
                     checked={selected.length === options.length}
                     onChange={() => toggleOption("all")}
-                    style={{ display: "none" }}
                 />
-                All
+                Select All
             </label>
             {options.map((option) => (
                 <label
                     key={option}
-                    style={{
-                        cursor: "pointer",
-                        marginRight: "10px",
-                        color: selected.includes(option) ? "green" : "blue",
-                        textDecoration: "underline",
-                    }}
+                    className={`${styles.multiSelectLabel} ${
+                        selected.includes(option) ? styles.selected : ""
+                    }`}
                 >
                     <input
                         type="checkbox"
                         value={option}
                         checked={selected.includes(option)}
                         onChange={() => toggleOption(option)}
-                        style={{ display: "none" }}
                     />
                     {formatLabel(option, rejects)}
                 </label>

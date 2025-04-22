@@ -1,0 +1,113 @@
+/* PlaceCard.module.css */
+
+/* Card Container */
+.placeCardContainer {
+    width: 100%;
+    max-width: 400px; /* Fixed width for consistent sizing */
+    margin: 0 auto;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: white;
+    height: 100%; /* Ensure equal height */
+}
+
+.placeCardContainer:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+/* Image Section */
+.placeCard {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 60%; /* 3:2 aspect ratio */
+    overflow: hidden;
+}
+
+.placeCardImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.placeCardContainer:hover .placeCardImage {
+    transform: scale(1.03);
+}
+
+/* Content Section */
+.placeCardContent {
+    padding: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.placeCardTitle {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: #2d3748;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.placeCardDescription {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #4a5568;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Updated styles for perfect alignment */
+.placeCardRating,
+.placeCardPriceLevel {
+    margin: 0;
+    font-size: 0.9rem;
+    color: #4a5568;
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding-left: 0.5rem; /* Added fixed padding */
+    text-indent: -1.2rem; /* Pulls text back to align with icon */
+}
+
+/* Icon positioning */
+.placeCardRating::before,
+.placeCardPriceLevel::before {
+    width: 1.2rem; /* Fixed width for icons */
+    text-align: center;
+}
+
+/* Specific icon styles */
+.placeCardRating::before {
+    content: "★";
+    color: #f6ad55;
+    font-size: 1rem;
+    margin-right: 0.6rem; /* Space between icon and text */
+}
+
+.placeCardPriceLevel::before {
+    content: "💰";
+    font-size: 0.9rem;
+    margin-right: 0.6rem; /* Space between icon and text */
+}
+
+/* Responsive Grid Layout for 2 cards */
+@media (min-width: 768px) {
+    .placeCardContainer {
+        max-width: calc(50% - 1rem); /* 2 cards with gap */
+    }
+}
