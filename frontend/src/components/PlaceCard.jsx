@@ -1,29 +1,48 @@
-import { useState } from "react";
 import styles from "./PlaceCard.module.css";
 import PlaceDetails from "./PlaceDetails"; // Import the details component
 import { convertPriceLevel } from "../Helper/placeFunc"; // Import the utility function
+import StarRating from "./StarRating";
+import { useEffect, useState } from "react";
 
 const PlaceCard = ({ place }) => {
-    const [showDetails, setShowDetails] = useState(false); // State to toggle details
+    const [showDetails, setShowDetails] = useState(false); // Toggle for showing details
+    const [placeDetails, setPlaceDetails] = useState(null); // Store place details
+    const [photoUrl, setPhotoUrl] = useState(""); // Store photo URL
+    const [displayName, setDisplayName] = useState("Unknown Place"); // Store display name
 
-    // Construct the photo URL using the new API format
-    const photoUrl = place.photos?.[0]?.name
-        ? `https://places.googleapis.com/v1/${
-              place.photos[0].name
-          }/media?maxWidthPx=400&key=${
-              import.meta.env.VITE_GOOGLE_MAPS_API_KEY
-          }`
-        : "https://via.placeholder.com/400"; // Fallback image if no photo is available
+    const handleCardClick = () => setShowDetails(true); // Show details on card click
+    const handleCloseDetails = () => setShowDetails(false); // Hide details on close
 
-    const displayName = place.displayName?.text || "Unknown Place";
+    useEffect(() => {
+        const fetchPlaceDetails = async () => {
+            try {
+                const response = await fetch(
+                    `${
+                        import.meta.env.VITE_BACKEND_URL
+                    }/google-maps/placeDetails/${place.id}`
+                );
+                const data = await response.json();
 
-    const handleCardClick = () => {
-        setShowDetails(true); // Show the details component
-    };
+                setPlaceDetails(data); // Set fetched place details
 
-    const handleCloseDetails = () => {
-        setShowDetails(false); // Hide the details component
-    };
+                // Construct photo URL or fallback to placeholder
+                const photo = data.photos?.[0]?.name
+                    ? `https://places.googleapis.com/v1/${
+                          data.photos[0].name
+                      }/media?maxWidthPx=400&key=${
+                          import.meta.env.VITE_GOOGLE_MAPS_API_KEY
+                      }`
+                    : "https://via.placeholder.com/400";
+
+                setPhotoUrl(photo); // Update photo URL
+                setDisplayName(data.displayName?.text || "Unknown Place"); // Update display name
+            } catch (error) {
+                console.error("Error fetching place details:", error);
+            }
+        };
+
+        fetchPlaceDetails();
+    }, [place.id]); // Re-run effect if place.id changes
 
     return (
         <>
@@ -40,21 +59,29 @@ const PlaceCard = ({ place }) => {
                 </div>
                 <div className={styles.placeCardContent}>
                     <h2 className={styles.placeCardTitle}>{displayName}</h2>
-                    <p className={styles.placeCardDescription}>
-                        {place.formattedAddress}
-                    </p>
-                    <p className={styles.placeCardRating}>
-                        Rating: {place.rating}
-                    </p>
-                    <p className={styles.placeCardPriceLevel}>
-                        Price Level: {convertPriceLevel(place.priceLevel)}
-                    </p>
+                    {placeDetails && ( // Ensure placeDetails is not null before rendering
+                        <>
+                            <p className={styles.placeCardDescription}>
+                                {placeDetails.formattedAddress}
+                            </p>
+                            {placeDetails.rating && (
+                                <StarRating rating={placeDetails.rating} />
+                            )}
+                            <p className={styles.placeCardPriceLevel}>
+                                Price Level:{" "}
+                                {convertPriceLevel(placeDetails.priceLevel)}
+                            </p>
+                        </>
+                    )}
                 </div>
             </section>
 
             {/* Render the details component if showDetails is true */}
-            {showDetails && (
-                <PlaceDetails place={place} onClose={handleCloseDetails} />
+            {showDetails && placeDetails && (
+                <PlaceDetails
+                    place={placeDetails}
+                    onClose={handleCloseDetails}
+                />
             )}
         </>
     );

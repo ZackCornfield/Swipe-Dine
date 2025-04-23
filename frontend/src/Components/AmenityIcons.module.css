@@ -1,0 +1,51 @@
+/* Add these to your existing CSS */
+.amenity {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 8px;
+    border-radius: 8px;
+    background-color: #f8f8f8;
+}
+
+.amenity.available {
+    background-color: #f0ffff;
+}
+
+.icon {
+    font-size: 24px;
+    margin-bottom: 6px;
+}
+
+.amenity.available .icon {
+    color: var(--accent-color);
+}
+
+.amenity.unavailable .icon {
+    color: #f44336;
+}
+
+.label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    margin-bottom: 2px;
+}
+
+.status {
+    font-size: 0.7rem;
+    color: #666;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .label {
+        font-size: 0.7rem;
+    }
+
+    .status {
+        font-size: 0.6rem;
+    }
+}

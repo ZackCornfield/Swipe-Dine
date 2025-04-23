@@ -6,7 +6,7 @@ import styles from "./SearchForm.module.css";
 import getBrowserLocation from "../Helper/locationFunc";
 import MultiSelectCheckboxes from "./MultipleDropdown";
 import { useNavigate } from "react-router-dom";
-import PlaceCard from "./PlaceCard";
+
 const SearchForm = () => {
     const [loading, setLoading] = useState(false);
     const [coords, setCoords] = useState({
@@ -22,7 +22,6 @@ const SearchForm = () => {
     const geosuggestRef = useRef(null);
     const [showSuggestions, setShowSuggestions] = useState(true);
     const [isUsingCurrentLocation, setIsUsingCurrentLocation] = useState(false);
-    const [mockPlace, setMockPlace] = useState({});
 
     const restaurantTypes = [
         "american_restaurant",
@@ -77,8 +76,6 @@ const SearchForm = () => {
                 rating,
             };
 
-            console.log("Form Data: ", formData); // Log the form data for debugging
-
             const response = await fetch(
                 `${import.meta.env.VITE_BACKEND_URL}/google-maps/places`,
                 {
@@ -95,22 +92,13 @@ const SearchForm = () => {
             }
 
             const places = await response.json(); // Parse the JSON response
-            const placeDetails = await fetch(
-                `${import.meta.env.VITE_BACKEND_URL}/google-maps/placeDetails/${
-                    places[0].id
-                }`
-            );
-            const placeDetailsData = await placeDetails.json(); // Parse the JSON response
-            setMockPlace(placeDetailsData); // Set the mock place data in the state
             sessionStorage.setItem("places", JSON.stringify(places)); // Store the places in session storage
-            // How to access the places in another component?
-            // const places = JSON.parse(sessionStorage.getItem("places"));
         } catch (error) {
             console.error("Error searching for places", error);
         } finally {
             setLoading(false);
             resetState(); // Reset the state after fetching the data
-            //navigate("/matchup"); // Navigate to the /matchup route after fetching the data
+            navigate("/matchup"); // Navigate to the /matchup route after fetching the data
         }
     };
 
@@ -256,8 +244,6 @@ const SearchForm = () => {
                             Search
                         </button>
                     </div>
-
-                    <PlaceCard place={mockPlace} />
                 </form>
             )}
         </section>

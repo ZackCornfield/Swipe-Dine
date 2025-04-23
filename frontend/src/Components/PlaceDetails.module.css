@@ -1,0 +1,199 @@
+/* PlaceDetails.module.css */
+.placeDetailsContainer {
+    position: relative;
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    padding: 24px;
+    max-width: 500px;
+    width: 100%;
+    margin: 20px auto;
+    overflow: hidden;
+}
+
+.placeDetailsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.placeDetailsHeader h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: #333;
+    max-width: 80%;
+}
+
+.closeButton {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.05);
+}
+
+.closeButton::before {
+    content: "×";
+    font-size: 20px;
+    line-height: 1;
+}
+
+.placeDetailsContent {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    color: #555;
+}
+
+.placeDetailsContent p:first-of-type {
+    font-size: 1rem;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 8px;
+}
+
+/* Rating and price level */
+.placeDetailsContent p:nth-of-type(2),
+.placeDetailsContent p:nth-of-type(3) {
+    display: inline-block;
+    background-color: #f8f8f8;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    margin-right: 8px;
+    font-weight: bold;
+}
+
+/* Links section */
+.placeDetailsLinks {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin: 16px 0;
+}
+
+.placeDetailsContent a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #1a73e8;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: all 0.2s;
+    padding: 8px 12px;
+    border-radius: 6px;
+    background-color: #f8f9fa;
+}
+
+.placeDetailsContent a:hover {
+    color: #0d5bba;
+    background-color: #e8f0fe;
+    text-decoration: none;
+}
+
+.placeDetailsContent a::before {
+    content: "→";
+}
+
+/* Carousel container */
+.placeDetailsContainer > div:first-of-type {
+    margin-bottom: 20px;
+}
+
+/* Amenities list */
+.amenitiesGrid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+}
+/* Add these styles to your existing CSS */
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.placeDetailsContainer {
+    background-color: white;
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    position: relative;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Ensure close button stays in top right */
+.closeButton {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #f0f0f0;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.closeButton:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.05);
+}
+
+.closeButton::before {
+    content: "×";
+    font-size: 20px;
+    line-height: 1;
+}
+
+/* Responsive styles for smaller screens */
+
+@media (max-width: 768px) {
+    .amenitiesGrid {
+        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+    }
+}

@@ -1,0 +1,17 @@
+.starRating {
+    display: flex;
+    align-items: center;
+    gap: 2px;
+}
+
+.starSvg {
+    width: 20px;
+    height: 20px;
+    fill: #cccccc; /* Default empty star color */
+}
+
+.ratingText {
+    margin-left: 8px;
+    color: #666;
+    font-size: 0.9rem;
+}
