@@ -33,7 +33,6 @@ function App() {
               />
             }
           ></Route>
-          <Route path="/result" element={<ResultPage />}></Route>
         </Route>
       </Routes>
     </Router>
