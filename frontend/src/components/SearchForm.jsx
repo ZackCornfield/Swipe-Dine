@@ -1,7 +1,7 @@
 import { useState, useRef } from "react";
 import { PuffLoader } from "react-spinners";
 import Geosuggest from "@ubilabs/react-geosuggest";
-import useGoogleMaps from "../hooks/useGoogleMaps";
+import useGoogleMaps from "../Hooks/useGoogleMaps";
 import styles from "./SearchForm.module.css";
 import getBrowserLocation from "../Helper/locationFunc";
 import MultiSelectCheckboxes from "./MultipleDropdown";

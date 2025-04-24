@@ -1,9 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import SearchPage from "./pages/SearchPage";
-import MatchUpPage from "./pages/MatchUpPage";
+import SearchPage from "./Pages/SearchPage";
+import MatchUpPage from "./Pages/MatchUpPage";
 import "./App.css";
 import Layout from "./Pages/Layout";
-import useGoogleMaps from "./hooks/useGoogleMaps";
+import useGoogleMaps from "./Hooks/useGoogleMaps";
 import { useState, useEffect } from "react";
 
 function App() {
