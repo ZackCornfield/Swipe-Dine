@@ -1,6 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import SearchPage from "./Pages/SearchPage";
-import ResultPage from "./Pages/ResultPage";
 import MatchUpPage from "./pages/MatchUpPage";
 import "./App.css";
 import Layout from "./Pages/Layout";
